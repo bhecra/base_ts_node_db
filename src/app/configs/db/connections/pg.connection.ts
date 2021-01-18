@@ -4,9 +4,9 @@ import { DataBaseConnection } from '../interfaces/connection.interface';
 export class PgConnection implements DataBaseConnection {
 
     public pool = new Pool({
-        user: '****',
+        user: 'postgres',
         host: '127.0.0.1',
-        password: '****',
+        password: '357159js',
         database: 'typescriptdb',
         port: 5432
     });

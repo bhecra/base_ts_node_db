@@ -1,10 +1,10 @@
-import express, { json } from "express";
+import express, { json } from 'express';
 import bodyParser from 'body-parser';
 
 require('./configs/server/server-conf');
 
 import idexRoutes from './routes/index';
-import { FactoryDatabase } from "./configs/db/interfaces/db.factory";
+import { FactoryDatabase } from './configs/db/interfaces/db.factory';
 
 const PORT = 8080;
 const app = express();
@@ -16,23 +16,30 @@ const dbConnection = factoryDatabase.getDatabaseInstance(dbReference);
 
 // middlewares
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(idexRoutes);
 app.set('port', PORT);
 
-app.get("/", (request, response) => {
-  return response.json({ message: "Hello, TypeScript!" });
+app.get('/', (request, response) => {
+	return response.json({ message: 'Hello, TypeScript!' });
 });
 
-dbConnection.connectToDataBase()
-    .then(_ => {
-        console.log('\x1b[33m%s\x1b[0m: Database correctly \x1b[32m%s\x1b[0m', `[db-${dbReference}]`, 'connected');
-        app.listen(PORT, () => {
-          console.log(`🚀 Server started on \x1b[34m%s\x1b[0m `,`http://localhost:${PORT}`);
-        });
-    })
-    .catch((error: any) => {
-        throw new Error(error);
-    });
-
+dbConnection
+	.connectToDataBase()
+	.then((_) => {
+		console.log(
+			'\x1b[33m%s\x1b[0m: Database correctly \x1b[32m%s\x1b[0m',
+			`[db-${dbReference}]`,
+			'connected'
+		);
+		app.listen(PORT, () => {
+			console.log(
+				`🚀 Server started on \x1b[34m%s\x1b[0m `,
+				`http://localhost:${PORT}`
+			);
+		});
+	})
+	.catch((error: any) => {
+		throw new Error(error);
+	});
