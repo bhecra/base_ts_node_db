@@ -3,16 +3,17 @@ import { DataBaseConnection } from '../interfaces/connection.interface';
 
 export class PgConnection implements DataBaseConnection {
 
-    public pool = new Pool({
+    public commonDB = new Pool({
         user: 'postgres',
         host: '127.0.0.1',
         password: '357159js',
-        database: 'typescriptdb',
+        database: 'common_db',
         port: 5432
     });
 
+
     connectToDataBase(): Promise<any> {
-        return this.pool.connect();
+        return this.commonDB.connect();
     }
     
 }
