@@ -1,6 +1,10 @@
 import express, { json } from 'express';
 import bodyParser from 'body-parser';
 
+import * as userService from './services/users';
+import { connectAllDb } from './configs/db/services/connectionMannager';
+import * as connectionResolver from './middlewares/connectionResolver';
+
 require('./configs/server/server-conf');
 
 import idexRoutes from './routes/index';
@@ -24,6 +28,13 @@ app.set('port', PORT);
 app.get('/', (request, response) => {
 	return response.json({ message: 'Hello, TypeScript!' });
 });
+
+connectAllDb();
+app.use(connectionResolver.resolve);
+
+
+// API Route for getting users
+app.get('/users', userService.getAll);
 
 dbConnection
 	.connectToDataBase()

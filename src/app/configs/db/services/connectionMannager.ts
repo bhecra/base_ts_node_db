@@ -6,7 +6,7 @@ const pgConecction: PgConnection = new PgConnection();
 
 let connectionMap: any;
 
-export async function conectAllDb() {
+export async function connectAllDb() {
 	let tenants = [];
 
 	const response: QueryResult = await pgConecction.commonDB.query(

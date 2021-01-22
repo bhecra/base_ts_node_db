@@ -11,7 +11,6 @@ export class PgConnection implements DataBaseConnection {
         port: 5432
     });
 
-
     connectToDataBase(): Promise<any> {
         return this.commonDB.connect();
     }
