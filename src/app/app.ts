@@ -2,7 +2,7 @@ import express, { json } from 'express';
 import bodyParser from 'body-parser';
 
 import * as userService from './services/users';
-import { connectAllDb } from './configs/db/services/connectionMannager';
+import { connectAllDb } from './configs/db/managers/connectionMannager';
 import * as connectionResolver from './middlewares/connectionResolver';
 
 require('./configs/server/server-conf');

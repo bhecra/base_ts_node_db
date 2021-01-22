@@ -1,5 +1,5 @@
 import { QueryResult } from 'pg';
-import { getConnection } from '../configs/db/services/connectionMannager';
+import { getConnection } from '../configs/db/managers/connectionMannager';
 
 /**
  * Get all the users.

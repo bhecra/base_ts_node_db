@@ -1,7 +1,7 @@
 
 import { createNamespace } from 'continuation-local-storage';
 
-import { getConnectionBySlug } from '../configs/db/services/connectionMannager';
+import { getConnectionBySlug } from '../configs/db/managers/connectionMannager';
 
 // Create a namespace for the application.
 let nameSpace = createNamespace('unique context');
