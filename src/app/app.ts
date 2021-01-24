@@ -10,7 +10,7 @@ require('./configs/server/server-conf');
 import idexRoutes from './routes/index';
 import { FactoryDatabase } from './configs/db/interfaces/db.factory';
 
-const PORT = 8080;
+const PORT = process.env.PORT;
 const app = express();
 
 const dbReference = process.env.DB;

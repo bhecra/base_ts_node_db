@@ -1,14 +1,15 @@
 import { Pool } from 'pg';
 import { DataBaseConnection } from '../interfaces/connection.interface';
+require('../../server/server-conf');
 
 export class PgConnection implements DataBaseConnection {
 
     public commonDB = new Pool({
-        user: 'postgres',
-        host: '127.0.0.1',
-        password: '357159js',
-        database: 'common_db',
-        port: 5432
+        user: process.env.DB_USER,
+        host: process.env.DB_HOST0,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE,
+        port: Number(process.env.DB_PORT)
     });
 
     connectToDataBase(): Promise<any> {
