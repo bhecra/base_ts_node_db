@@ -15,6 +15,7 @@ export async function connectAllDb() {
 
 	tenants = response.rows;
 
+
 	connectionMap = tenants
 		.map((tenant) => {
 			return {

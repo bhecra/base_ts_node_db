@@ -35,7 +35,12 @@ app.use(connectionResolver.resolve);
 
 // API Route for getting users
 app.get('/users', userService.getAll);
-
+app.listen(PORT, () => {
+	console.log(
+		`🚀 Server started on \x1b[34m%s\x1b[0m `,
+		`http://localhost:${PORT}`
+	);
+});
 dbConnection
 	.connectToDataBase()
 	.then((_) => {
@@ -44,12 +49,7 @@ dbConnection
 			`[db-${dbReference}]`,
 			'connected'
 		);
-		app.listen(PORT, () => {
-			console.log(
-				`🚀 Server started on \x1b[34m%s\x1b[0m `,
-				`http://localhost:${PORT}`
-			);
-		});
+	
 	})
 	.catch((error: any) => {
 		throw new Error(error);
